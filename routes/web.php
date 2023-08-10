@@ -19,4 +19,10 @@ Route::get('/', function () {
 
 
 //CONTACTO
-Route::get('/contacto', [App\Http\Controllers\ContactoController::class, 'crear'])->name('contacto');
+Route::get('/contacto', [App\Http\Controllers\ContactController::class, 'loadview'])->name('contact');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/crear/publicacion', [App\Http\Controllers\PublicationsController::class, 'create'])->name('publications');

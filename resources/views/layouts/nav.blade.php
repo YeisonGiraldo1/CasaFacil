@@ -40,9 +40,9 @@
             <div class="row">
                 <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                        <p><i class="fa fa-envelope mr-2"></i>casafacil@gmail.com</p>
                         <p class="text-body px-3">|</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</p>
+                        <!-- <p><i class="fa fa-phone-alt mr-2"></i></p> -->
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
@@ -84,16 +84,32 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                        <a href="package.html" class="nav-item nav-link">Tour Packages</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-item nav-link">Contacto</a>
+                        <a href="service.html" class="nav-item nav-link">Buscar</a>
+                        @auth
+                        <a href="{{route('publications')}}" class="nav-item nav-link">Publicar</a>
+                        @endauth
+                            <a href="{{route('contact')}}" class="nav-item nav-link">Contacto</a>
+                            @auth
+                        <a class="nav-item nav-link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Cerrar sesión') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                    @else
+
+                                    <div class="nav-item dropdown">
                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="blog.html" class="dropdown-item">Iniciar Sesion</a>
-                                <a href="single.html" class="dropdown-item">Crear Cuenta</a>
+                                <a href="{{asset('login')}}" class="dropdown-item">Iniciar Sesion</a>
+                                <a href="{{asset('register')}}" class="dropdown-item">Crear Cuenta</a>
                             </div>
                         </div>
                         <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Ingresar</a>
+
+                        @endauth
                     </div>
                 </div>
             </nav>
