@@ -20,18 +20,28 @@ return new class extends Migration
             $table->string('address');
             $table->integer('price');
             $table->string('stratum');
-            $table->decimal('size');
             $table->string('status');
-            $table->string('number_environments');
+            $table->decimal('size');
             $table->string('number_rooms');
             $table->string('number_bathrooms');
-            $table->string('interior_floors');
             $table->string('description');
-           // $table->string('photos');
+            $table->string('main_image')->nullable();
+            $table->string('additional_image_1')->nullable();
+            $table->string('additional_image_2')->nullable();
+            $table->string('additional_image_3')->nullable();
+            $table->string('additional_image_4')->nullable();
+            $table->string('additional_imagej_5')->nullable();
+            $table->string('additional_image_6')->nullable();
+            $table->string('additional_image_7')->nullable();
+            $table->string('additional_image_8')->nullable();
+            $table->string('additional_image_9')->nullable();
+            $table->string('additional_image_10')->nullable();
            $table->string('email');
            $table->string('name');
            $table->string('lastname');
            $table->string('phone');
+           $table->unsignedBigInteger("user_id")->nullable();
+           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         $table->timestamps();
         });
     }
@@ -41,6 +51,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('publications');
     }
 };

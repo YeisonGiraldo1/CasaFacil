@@ -23,10 +23,7 @@
 
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
 </head>
 
 
@@ -82,39 +79,63 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Buscar</a>
+                        <a href="{{route('welcome')}}" class="nav-item nav-link active">Home</a>
+                        <a href="service.html" class="nav-item nav-link">Buscador</a>
                         @auth
                         <a href="{{route('publications')}}" class="nav-item nav-link">Publicar</a>
                         @endauth
                             <a href="{{route('contact')}}" class="nav-item nav-link">Contacto</a>
-                            @auth
-                        <a class="nav-item nav-link" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Cerrar sesión') }}
-                                    </a>
+                           
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                    @else
-
-                                    <div class="nav-item dropdown">
-                            <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="{{asset('login')}}" class="dropdown-item">Iniciar Sesion</a>
-                                <a href="{{asset('register')}}" class="dropdown-item">Crear Cuenta</a>
-                            </div>
-                        </div>
-                        <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Ingresar</a>
-
-                        @endauth
-                    </div>
-                </div>
+                           
+                            <div class="nav-item dropdown">
+    <!-- Ícono de usuario que se convierte en menú desplegable -->
+    @auth
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-user"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="{{route('profile')}}">Perfil</a>
+        <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Cerrar sesión
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+    </div>
+    @else
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-user"></i> Ingresar
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a href="{{asset('login')}}" class="dropdown-item">Iniciar Sesión</a>
+        <a href="{{asset('register')}}" class="dropdown-item">Crear Cuenta</a>
+    </div>
+    @endauth
+</div>
+</div>
             </nav>
         </div>
     </div>
     <!-- Navbar End -->
+
+
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 
     @yield('content')
