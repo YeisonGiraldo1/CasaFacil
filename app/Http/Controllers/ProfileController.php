@@ -15,6 +15,10 @@ return view("profile.profile");
     }
 
 
+
+
+
+    
     public function loadviewupdateprofile(){
         $id=  auth()->user()->id;
         $data['datos'] = User::select()->where("id",$id)->get();
