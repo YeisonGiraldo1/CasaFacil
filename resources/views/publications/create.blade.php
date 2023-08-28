@@ -19,7 +19,7 @@
         <form action="{{route ('registerpublications')}}" method="post" enctype="multipart/form-data">
             @csrf
 
-
+            @auth
             <!-- FIRST ROW (WARNING DATA) -->
             <h5 >DATOS DEL AVISO</h5>
             <div class="row">
@@ -201,6 +201,39 @@
 </div><br>
 
 
+ <!-- ANOTHER ROW (ADDITIONAL IMAGES) -->
+<div class="row">
+<div class="col-md-4 mb-3">
+        <input type="file" class="form-control" name="additional_image_5" multiple><br>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <input type="file" class="form-control" name="additional_image_6" multiple><br>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <input type="file" class="form-control" name="additional_image_7" multiple><br>
+    </div>
+</div>
+
+
+ <!-- ANOTHER ROW (ADDITIONAL IMAGES) -->
+ <div class="row">
+<div class="col-md-4 mb-3">
+        <input type="file" class="form-control" name="additional_image_8" multiple><br>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <input type="file" class="form-control" name="additional_image_9" multiple><br>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <input type="file" class="form-control" name="additional_image_10" multiple><br>
+    </div>
+</div>
+
+
+
  <!-- ANOTHER ROW (CONTACT) -->
  <h5>Datos de contacto</h5>
  <div class="row">
@@ -239,6 +272,7 @@
 
             <button type="submit" class="btn btn-success mt-4">Publicar</button>
         </form>
+        @endauth
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

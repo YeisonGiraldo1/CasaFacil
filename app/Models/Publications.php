@@ -38,7 +38,8 @@ class Publications extends Model
         'email',
         'name',
         'lastname',
-        'phone'
+        'phone',
+        'user_id'
 
 
     ];

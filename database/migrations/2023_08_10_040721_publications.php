@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('additional_image_2')->nullable();
             $table->string('additional_image_3')->nullable();
             $table->string('additional_image_4')->nullable();
-            $table->string('additional_imagej_5')->nullable();
+            $table->string('additional_image_5')->nullable();
             $table->string('additional_image_6')->nullable();
             $table->string('additional_image_7')->nullable();
             $table->string('additional_image_8')->nullable();

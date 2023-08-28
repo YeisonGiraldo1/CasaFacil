@@ -80,7 +80,7 @@
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         <a href="{{route('welcome')}}" class="nav-item nav-link active">Home</a>
-                        <a href="service.html" class="nav-item nav-link">Buscador</a>
+                        <a href="{{route('property.search')}}" class="nav-item nav-link">Buscador</a>
                         @auth
                         <a href="{{route('publications')}}" class="nav-item nav-link">Publicar</a>
                         @endauth
@@ -137,5 +137,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+
 
     @yield('content')

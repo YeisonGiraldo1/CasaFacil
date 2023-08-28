@@ -98,6 +98,7 @@
 <!-- Booking End -->
 
 
+
 <!-- Packages Start -->
 <div class="container-fluid py-5">
     <div class="container pt-5 pb-3">
@@ -116,7 +117,7 @@
                             <div class="d-flex justify-content-between mb-3">
                                 <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{ $publication->city }}</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">{{ $publication->property_type }} en {{ $publication->offer_type }}</a>
+                            <a class="h5 text-decoration-none" href="/detalle/{{$publication->id}}/propiedad">{{ $publication->property_type }} en {{ $publication->offer_type }}</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
