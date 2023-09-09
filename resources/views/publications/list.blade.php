@@ -23,7 +23,8 @@
         <th>Estrato</th>
         <th>Estado</th>
         <th>Tamaño</th>
-        <th>Acciones</th>
+        <th>Actualizar</th>
+        <th>Eliminar</th>
       </tr>
     </thead>
     <tbody>
@@ -39,10 +40,11 @@
         <td>{{$p->size}}</td>
         <td>
         
-          <button type="button" class="btn btn-primary">Actualizar</button>
-          <!-- <a href="/elimina/{{$p->id}}" >ELIMINAR<a/> -->
-            <a  onclick="deletepublications({{$p->id}})">eliminar</a>
-           
+        <a href="/actualizarpublicacion/{{$p->id}}"><button type="button" class="btn btn-primary">Actualizar</button></a>
+          <!-- <a href="/elimina/{{$p->id}}" >ELIMINAR<a/> -->  
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" onclick="deletepublications({{$p->id}})">eliminar</button>
         </td>
       </tr>
       <br>

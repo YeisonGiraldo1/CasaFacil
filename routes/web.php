@@ -50,3 +50,9 @@ Route::get('/listar/propiedades', [App\Http\Controllers\PublicationsController::
 
 
 Route::get('/elimina/{id}', [App\Http\Controllers\PublicationsController::class, 'delete'])->name('delete.publications');
+
+Route::get('/actualizarpublicacion/{id}', [App\Http\Controllers\PublicationsController::class, 'loadviewrefresh'])->name('publication.update');
+
+Route::post('/actualizar/publicaciones', [App\Http\Controllers\PublicationsController::class, 'update'])->name('update.publication');
+
+

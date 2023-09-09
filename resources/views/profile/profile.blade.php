@@ -26,11 +26,12 @@
         <i class="fa fa-user"></i>
       </div>
       <div class="user-info">
-        <h3>Datos personales</h3>
-        <p>Actualiza tu información</p>
+        <h3>Mis publicaciones</h3>
+        <p></p>
       </div>
-      <button class="btn">Actualizar</button>
+      <a href="{{route('list.publications')}}"><button class="btn">Ver mis publicaciones</button></a> 
     </div>
+    
     <div class="user-box">
       <div class="user-icon">
         <i class="fa fa-user"></i>

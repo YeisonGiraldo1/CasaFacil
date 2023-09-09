@@ -1,5 +1,4 @@
-@extends('layouts.nav')
-@section('content')
+
 
 <!-- con diseño -->
 
@@ -16,31 +15,26 @@
 
 <body class="bg-light">
     <div class="container mt-5">
-        <h1 class="text-center mb-4">PUBLICACIONES</h1>
-        <form action="{{route ('registerpublications')}}" method="post" enctype="multipart/form-data">
+        <h1 class="text-center mb-4">Actualizar publicaciones</h1>
+        <form action="{{route ('update.publication')}}" method="post" enctype="multipart/form-data">
             @csrf
 
             @auth
+
+            @foreach($datos as $p)
             <!-- FIRST ROW (WARNING DATA) -->
             <h5 >DATOS DEL AVISO</h5>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="offer_type">Tipo de oferta</label>
                     <select class="form-select" name="offer_type" id="offer_type">
-                    <option value="">Selecciona una opción</option>
                         <option value="venta">Venta</option>
                         <option value="arriendo">Arriendo</option>
                     </select>
-                    @if ($errors->has('offer_type'))
-        <span class="text-danger">{{ $errors->first('offer_type') }}</span>
-        @endif
                 </div>
-
-
                 <div class="col-md-6 mb-3">
                     <label for="property_type">Tipo de Inmueble</label>
                     <select class="form-select" name="property_type" id="property_type">
-                    <option value="">Selecciona una opción</option>
                         <option value="apartamento">Apartamento</option>
                         <option value="casa">Casa</option>
                         <option value="finca">Finca</option>
@@ -51,9 +45,6 @@
                         <option value="casa campestre">Casa campestre</option>
                         <option value="casalote">Casa lote</option>
                     </select>
-                    @if ($errors->has('offer_type'))
-        <span class="text-danger">{{ $errors->first('offer_type') }}</span>
-        @endif
                 </div>
             </div>
             <br>
@@ -67,27 +58,18 @@
             <div class="row">
             <div class="col-md-4 mb-3">
                 <label for="city">Ciudad/Municipio</label>
-                <input type="text" class="form-control" name="city">
-                @if ($errors->has('city'))
-        <span class="text-danger">{{ $errors->first('city') }}</span>
-        @endif
+                <input type="text" class="form-control" name="city" value="{{$p->city}}">
             </div>
 
 
             <div class="col-md-4 mb-3">
             <label for="neighborhood">Barrio</label><br>
-            <input type="text"  class="form-control" name="neighborhood"><br>
-            @if ($errors->has('neighborhood'))
-        <span class="text-danger">{{ $errors->first('neighborhood') }}</span>
-        @endif
+            <input type="text"  class="form-control" name="neighborhood" value="{{$p->neighborhood}}"><br>
         </div>
 
         <div class="col-md-4 mb-3">
         <label for="address">Direccion</label><br>
-        <input type="text"  class="form-control" name="address"><br>
-        @if ($errors->has('address'))
-        <span class="text-danger">{{ $errors->first('address') }}</span>
-        @endif
+        <input type="text"  class="form-control" name="address"  value="{{$p->address}}"><br>
         </div>
     </div>
     <br>
@@ -99,16 +81,12 @@
     <div class="row">
         <div class="col-md-4 mb-3">
         <label for="price">Precio</label><br>
-        <input type="number" class="form-control" name="price"><br>
-        @if ($errors->has('price'))
-        <span class="text-danger">{{ $errors->first('price') }}</span>
-        @endif
+        <input type="number" class="form-control" name="price"  value="{{$p->price}}"><br>
     </div>
 
     <div class="col-md-4 mb-3">
         <label for="">Estrato</label><br>
         <select class="form-select" name="stratum" id="">
-        <option value="">Selecciona una opción</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -116,24 +94,17 @@
             <option value="5">5</option>
             <option value="6">6</option>
         </select>
-        @if ($errors->has('stratum'))
-        <span class="text-danger">{{ $errors->first('stratum') }}</span>
-        @endif
     </div>
 
     <div class="col-md-4 mb-3">
     <label for="status">Estado</label><br>
     <select class="form-select" name="status" id="">
-    <option value="">Selecciona una opción</option>
         <option value="Menos de 1 año">Menos de 1 año</option>
         <option value="1 año a 8 años">1 año a 8 años</option>
         <option value="9 a 15 años">9 a 15 años</option>
         <option value="16 a 30 años">16 a 30 años</option>
         <option value="Más de 30 años">Más de 30 años</option>
     </select>
-    @if ($errors->has('status'))
-        <span class="text-danger">{{ $errors->first('status') }}</span>
-        @endif
 </div>
 </div>
 <br>
@@ -146,16 +117,12 @@
 
 <div class="col-md-4 mb-3">
     <label for="size">tamaño en (m2)</label><br>
-    <input type="number"  class="form-control" name="size"><br><br>
-    @if ($errors->has('size'))
-        <span class="text-danger">{{ $errors->first('size') }}</span>
-        @endif
+    <input type="number"  class="form-control" name="size" value="{{$p->size}}"><br><br>
 </div> 
 
 <div class="col-md-4 mb-3">
     <label for="number_rooms">Numero de habitaciones</label><br>
     <select class="form-select" name="number_rooms" id="">
-    <option value="">Selecciona una opción</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -167,15 +134,11 @@
         <option value="9">9</option>
         <option value="10">10</option>
     </select>
-    @if ($errors->has('number_rooms'))
-        <span class="text-danger">{{ $errors->first('number_rooms') }}</span>
-        @endif
 </div>
 
 <div class="col-md-4 mb-3">
 <label for="number_bathrooms">Numero de Baños</label><br>
 <select class="form-select"  name="number_bathrooms" id="">
-<option value="">Selecciona una opción</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -187,9 +150,6 @@
     <option value="9">9</option>
     <option value="10">10</option>
 </select>
-@if ($errors->has('number_bathrooms'))
-        <span class="text-danger">{{ $errors->first('number_bathrooms') }}</span>
-        @endif
 </div>
  </div>
 <br>
@@ -201,10 +161,7 @@
 <div class="row">
     <div class="col-12 mb-3">
         <label for="description">Descripción</label>
-        <textarea class="form-control" name="description" rows="4"></textarea>
-        @if ($errors->has('description'))
-        <span class="text-danger">{{ $errors->first('description') }}</span>
-        @endif
+        <input class="form-control" name="description" rows="4" value="{{$p->description}}"></input>
     </div>
 </div>
 <br>
@@ -216,10 +173,7 @@
 <div class="row">
     <div class="col-md-12 mb-3">
     <label for="main_image">Imagen principal</label><br>
-    <input type="file" class="form-control" name="main_image"><br><br>
-    @if ($errors->has('main_image'))
-    <span class="text-danger">{{ $errors->first('main_image') }}</span>
-  @endif
+    <input type="file" class="form-control" name="main_image" value="{{$p->main_image}}><br><br>
     </div>
 </div>
    
@@ -287,18 +241,12 @@
  <div class="row">
     <div class="col-md-3 mb-3">
     <label for="email">Email</label>
-    <input type="email" class="form-control" name="email"><br><br>
-    @if ($errors->has('email'))
-    <span class="text-danger">{{ $errors->first('email') }}</span>
-  @endif
+    <input type="email" class="form-control" name="email"  value="{{$p->email}}"><br><br>
 </div>
 
 <div class="col-md-3 mb-3">
 <label for="name">Nombre</label>
-<input type="text"  class="form-control" name="name"><br><br>
-@if ($errors->has('name'))
-    <span class="text-danger">{{ $errors->first('name') }}</span>
-  @endif
+<input type="text"  class="form-control" name="name"  value="{{$p->name}}"><br><br>
 </div>
 
 
@@ -306,31 +254,25 @@
 
 <div class="col-md-3 mb-3">
 <label for="lastname">Apellido</label>
-<input type="text"  class="form-control" name="lastname"><br><br>
-@if ($errors->has('lastname'))
-    <span class="text-danger">{{ $errors->first('lastname') }}</span>
-  @endif
+<input type="text"  class="form-control" name="lastname"  value="{{$p->lastname}}"><br><br>
 </div>
 
 
 <div class="col-md-3 mb-3">
 <label for="phone">Telefono</label>
-<input type="number"  class="form-control" name="phone"><br><br>
-@if ($errors->has('phone'))
-    <span class="text-danger">{{ $errors->first('phone') }}</span>
-  @endif
+<input type="number"  class="form-control" name="phone"  value="{{$p->phone}}"><br><br>
 </div>
 
 
  </div><br>
 
-
+@endforeach
            
 
 
 
 
-            <button type="submit" class="btn btn-success mt-4">Publicar</button>
+            <button type="submit" class="btn btn-success mt-4">Actualizar</button>
         </form>
         @endauth
     </div>
@@ -341,4 +283,3 @@
 
 </html>
 
-@endsection
